@@ -11,14 +11,14 @@ export class Project {
   @Prop({ required: true })
   cost: string;
 
-  @Prop({ type: Types.ObjectId, ref: 'Service' })
-  services: Types.ObjectId;
+  @Prop({ type: [Types.ObjectId], ref: 'Service' })
+  services: Types.ObjectId[];
 
   @Prop({ required: true })
   name: string;
 
-  @Prop({ type: Types.ObjectId, ref: 'Category' })
-  category: Types.ObjectId;
+  @Prop({ type: [Types.ObjectId], ref: 'Category' })
+  category: Types.ObjectId[];
 }
 
 export const ProjectSchema = SchemaFactory.createForClass(Project);
