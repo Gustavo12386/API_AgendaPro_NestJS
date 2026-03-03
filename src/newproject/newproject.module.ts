@@ -6,7 +6,6 @@ import { Project, ProjectSchema } from './schemas/project.schema';
 import { Category, CategorySchema} from './schemas/category.schema';
 import { Service, ServiceSchema} from './schemas/service.schema';
 import { ServiceRepository } from './repositories/service.repositories';
-import { ServiceService } from './services/service.service';
 import { NewprojectController } from './newproject.controller';
 import { ProjectsService } from './services/project.service';
 import { ProjectsRepository } from './repositories/project.repositories';
@@ -25,8 +24,7 @@ import { ProjectsRepository } from './repositories/project.repositories';
     ProjectsRepository,
     CategoryRepository,
     CategoryService,
-    ServiceRepository,  
-    ServiceService,    
+    ServiceRepository,        
   ],
 })
 export class NewprojectModule {}

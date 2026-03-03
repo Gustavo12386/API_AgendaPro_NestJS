@@ -7,7 +7,7 @@ import { NewprojectModule } from './newproject/newproject.module';
 @Module({
   imports: [
     MongooseModule.forRoot(
-      'mongodb+srv://calderarogustavo:T2nXnffwz6AjsxyO@cluster0.k3uul6z.mongodb.net/agendapro',
+      'mongodb+srv://calderarogustavo:T2nXnffwz6AjsxyO@cluster0.k3uul6z.mongodb.net/test',
     ),
     NewprojectModule,
   ],
