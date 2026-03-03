@@ -5,7 +5,7 @@ import { Service, ServiceDocument } from '../schemas/service.schema';
 import { IServiceEntity } from '../interfaces/IServiceEntity';
 
 @Injectable()
-export class CreateServiceRepository {
+export class ServiceRepository {
   constructor(
     @InjectModel(Service.name)
     private readonly serviceModel: Model<ServiceDocument>,
