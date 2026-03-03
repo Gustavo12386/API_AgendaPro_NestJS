@@ -9,6 +9,7 @@ import {
 } from '@nestjs/common';
 import { ProjectsService } from './services/project.service';
 import { CategoryService } from './services/category.service';
+import { ServiceService } from './services/service.service';
 import type { IProjectEntity } from './interfaces/IProjectEntity';
 import type { ICategoryEntity } from './interfaces/ICategoryEntity';
 
@@ -17,19 +18,25 @@ export class NewprojectController {
   constructor(
     private readonly projectsService: ProjectsService,
     private readonly categoryService: CategoryService,
+    private readonly serviceService: ServiceService,
   ) {}
 
-  @Post()
+  @Post('project')
   async createProject(@Body() body: any): Promise<IProjectEntity> {
     return this.projectsService.createProject(body);
   }
 
-  @Get()
+  @Post('service')
+  async createService(@Body() body: any): Promise<any> {
+    return this.serviceService.createService(body);
+  }  
+
+  @Get('categories')
   async findAllCategories(): Promise<ICategoryEntity[]> {
     return this.categoryService.getAll();
   }
 
-  @Get()
+  @Get('projects')
   async findAll(): Promise<IProjectEntity[]> {
     return this.projectsService.findAll();
   }

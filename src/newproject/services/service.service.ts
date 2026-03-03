@@ -8,7 +8,7 @@ export class ServiceService {
     private readonly serviceRepository: ServiceRepository,
   ) {}
 
-   async execute(service: IServiceEntity): Promise<IServiceEntity> {
+   async createService(service: IServiceEntity): Promise<IServiceEntity> {
      return this.serviceRepository.execute(service);
    }
 }
