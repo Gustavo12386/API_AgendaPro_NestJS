@@ -8,7 +8,7 @@ async function bootstrap() {
       'http://localhost:5173',
       'https://agendapro.netlify.app',
     ],
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+    methods: 'GET,PUT,POST,DELETE',
     credentials: true,
   });
   await app.listen(process.env.PORT ?? 3000);
