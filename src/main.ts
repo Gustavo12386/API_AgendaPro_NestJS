@@ -1,15 +1,27 @@
-import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
+import {
+  ExceptionFilter,
+  Catch,
+  ArgumentsHost,
+  HttpException,
+} from '@nestjs/common';
 
-async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+@Catch()
+class GlobalExceptionFilter implements ExceptionFilter {
+  catch(exception: any, host: ArgumentsHost) {
+    console.error('ERRO COMPLETO:', exception);
 
-  app.enableCors({
-    origin: true,
-    credentials: true,
-  });
+    const ctx = host.switchToHttp();
+    const response = ctx.getResponse();
 
-  await app.listen(process.env.PORT ?? 3000);
+    if (exception instanceof HttpException) {
+      response.status(exception.getStatus()).json({
+        message: exception.message,
+      });
+      return;
+    }
+
+    response.status(500).json({
+      message: 'Erro interno',
+    });
+  }
 }
-
-bootstrap();
