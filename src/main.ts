@@ -2,17 +2,25 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
-  try {
-    console.log('BOOTSTRAP INICIADO');
+  const app = await NestFactory.create(AppModule);
 
-    const app = await NestFactory.create(AppModule);
-    console.log('APP CRIADA');
+  app.enableCors({
+    origin: [
+      'https://agendapro.netlify.app',
+      'http://localhost:5173',
+    ],
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+    credentials: true,
+    allowedHeaders: [
+      'Content-Type',
+      'Authorization',
+      'Accept',
+      'Origin',
+      'X-Requested-With',
+    ],
+  });
 
-    await app.listen(process.env.PORT || 3000);
-    console.log('APP OUVINDO PORTA');
-  } catch (error) {
-    console.error(error);
-  }
+  await app.listen(process.env.PORT || 3000);
 }
 
 bootstrap();
