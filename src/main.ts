@@ -10,6 +10,16 @@ let cachedServer: any;
 
 //função para criar o servidor NestJS e armazená-lo em cache para reutilização em chamadas subsequentes
 async function bootstrap() {
+  console.log('NODE_ENV:', process.env.NODE_ENV);
+  console.log('MONGODB_URI EXISTS:', !!process.env.MONGODB_URI);
+
+  if (process.env.MONGODB_URI) {
+    console.log(
+      'MONGODB_URI START:',
+      process.env.MONGODB_URI.substring(0, 20),
+    );
+  }
+
   if (!cachedServer) {
     const app = await NestFactory.create(
       AppModule,
