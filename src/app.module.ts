@@ -6,9 +6,7 @@ import { NewprojectModule } from './newproject/newproject.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot(
-      'mongodb+srv://calderarogustavo:T2nXnffwz6AjsxyO@cluster0.k3uul6z.mongodb.net/test',
-    ),
+    MongooseModule.forRoot(process.env.MONGODB_URI as string),
     NewprojectModule,
   ],
   controllers: [AppController],
