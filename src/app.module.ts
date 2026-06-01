@@ -4,7 +4,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { NewprojectModule } from './newproject/newproject.module';
 
-// Configuração do módulo principal da aplicação, incluindo a conexão com o MongoDB e a importação do módulo Newproject
+
 @Module({
   imports: [
     MongooseModule.forRoot(process.env.MONGODB_URI as string),
